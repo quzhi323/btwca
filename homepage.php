@@ -160,12 +160,8 @@
                                         <div class="well well-lg">
                                             <div class="tabbable" id="carpool_list">
                                                 <ul class="nav nav-tabs">
+
                                                     <li class="active">
-                                                        <a href="#carpool-findall" data-toggle="tab"><span
-                                                                class="glyphicon glyphicon-th"
-                                                                aria-hidden="true">全部</span></a>
-                                                    </li>
-                                                    <li>
                                                         <a href="#carpool-findpax" data-toggle="tab"><span
                                                                 class="glyphicon glyphicon-bullhorn"
                                                                 aria-hidden="true">车找人</span></a>
@@ -183,9 +179,7 @@
 
                                                 </ul>
                                                 <div class="tab-content">
-                                                    <div class="tab-pane active" id="carpool-findall">
-                                                        all
-                                                    </div>
+                                                    
                                                     <div class="tab-pane" id="carpool-findpax">
 
                                                     </div>
