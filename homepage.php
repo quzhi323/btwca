@@ -160,7 +160,6 @@
                                         <div class="well well-lg">
                                             <div class="tabbable" id="carpool_list">
                                                 <ul class="nav nav-tabs">
-
                                                     <li class="active">
                                                         <a href="#carpool-findpax" data-toggle="tab"><span
                                                                 class="glyphicon glyphicon-bullhorn"
@@ -180,7 +179,7 @@
                                                 </ul>
                                                 <div class="tab-content">
 
-                                                    <div class="tab-pane" id="carpool-findpax">
+                                                    <div class="tab-pane active" id="carpool-findpax">
 
                                                     </div>
                                                     <div class="tab-pane" id="carpool-findcar">
@@ -460,6 +459,9 @@
             th3.innerHTML="时间";
             tr.append(th3);
 
+            var th4=document.createElement("th");
+            tr.append(th4);
+
             thead.append(tr);
             table.append(thead);
 
@@ -488,6 +490,7 @@
                 td3.innerHTML=record_list[i].datetime;
                 tr.append(td3);
 
+
                 var button = document.createElement("button");
                 button.setAttribute("type","button");
                 button.setAttribute("class","btn btn-primary btn-lg");
@@ -497,6 +500,10 @@
 
                 var fun_state = "createModal('"+record_list[i].id+"','"+record_list[i].datetime+"','"+record_list[i].phone+"','"+record_list[i].wechat+"','"+record_list[i].descpt+"','"+dept_info+"','"+dest_info+"')";
                 button.setAttribute("onclick",fun_state);
+
+                var td4= document.createElement("td");
+                td4.append(button);
+                tr.append(td4);
                 tbody.append(tr);
 
             }
