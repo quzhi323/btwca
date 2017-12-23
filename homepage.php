@@ -560,8 +560,7 @@
         function createRecord(record_list,parent_id) {
             var carpool_record =document.getElementById(parent_id);
             var table = document.createElement("table");
-            table.setAttribute("class","table");
-            table.setAttribute("class","table-hover");
+            table.setAttribute("class","table table-hover");
             var tbody = document.createElement("tbody");
 
             var thead=document.createElement("thead");
