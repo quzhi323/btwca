@@ -500,7 +500,7 @@
                 button.setAttribute("data-toggle","modal");
 
 
-                var fun_state = "createModal("+record_list[i].id+","+record_list[i].datetime+","+record_list[i].phone+","+record_list[i].wechat+","+record_list[i].descpt+","+dept_info+","+"dest_info+")"";
+                var fun_state = "'createModal("+record_list[i].id+","+record_list[i].datetime+","+record_list[i].phone+","+record_list[i].wechat+","+record_list[i].descpt+","+dept_info+","+"dest_info+")'";                                                                    
                 button.setAttribute("onclick",fun_state);
                 tbody.append(tr);
 

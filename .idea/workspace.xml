@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1e637193-ad7d-4ed4-82f3-21ab3ebb1be6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage.php" afterPath="$PROJECT_DIR$/homepage.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.html" afterPath="$PROJECT_DIR$/test.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,21 +21,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="homepage.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="homepage.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/homepage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="110" column="20" lean-forward="false" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
+            <state relative-caret-position="950">
+              <caret line="612" column="0" lean-forward="false" selection-start-line="612" selection-start-column="0" selection-end-line="612" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="511" column="0" lean-forward="false" selection-start-line="511" selection-start-column="0" selection-end-line="606" selection-end-column="9" />
+            <state relative-caret-position="341">
+              <caret line="532" column="42" lean-forward="true" selection-start-line="532" selection-start-column="42" selection-end-line="532" selection-end-column="42" />
               <folding>
                 <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -89,8 +90,8 @@
       <list>
         <option value="$PROJECT_DIR$/test2.html" />
         <option value="$PROJECT_DIR$/showcprec.php" />
-        <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/homepage.php" />
+        <option value="$PROJECT_DIR$/test.html" />
       </list>
     </option>
   </component>
@@ -217,7 +218,7 @@
       <option name="presentableId" value="Default" />
       <updated>1514039921109</updated>
       <workItem from="1514039923752" duration="3373000" />
-      <workItem from="1514044759305" duration="8146000" />
+      <workItem from="1514044759305" duration="8374000" />
     </task>
     <task id="LOCAL-00001" summary="..">
       <created>1514040884613</created>
@@ -237,7 +238,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11519000" />
+    <option name="totallyTimeSpent" value="11747000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -313,10 +314,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/homepage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="612" column="0" lean-forward="false" selection-start-line="612" selection-start-column="0" selection-end-line="612" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="511" column="0" lean-forward="false" selection-start-line="511" selection-start-column="0" selection-end-line="606" selection-end-column="9" />
+        <state relative-caret-position="341">
+          <caret line="532" column="42" lean-forward="true" selection-start-line="532" selection-start-column="42" selection-end-line="532" selection-end-column="42" />
           <folding>
             <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -328,14 +337,6 @@
             <element signature="n#style#0;n#img#1;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#2;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/homepage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="110" column="20" lean-forward="false" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
