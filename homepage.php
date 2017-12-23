@@ -8,30 +8,17 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <!-- Bootstrap Css -->
-    <link href="static/bootstrap-assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Style -->
-    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="static/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+         <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+         <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="static/css/bootstrap-datetimepicker.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <script type="text/javascript" src="static/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-
     <script src="static/js/html5shiv.js"></script>
     <script src="static/js/respond.min.js"></script>
-    <![endif]-->
-    <script type="text/javascript" src="static/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-
     <script src="static/js/moment-with-locales.js"></script>
     <script src="static/js/bootstrap-datetimepicker.js"></script>
-
     <script src="static/js/distpicker.data.js"></script>
     <script src="static/js/distpicker.js"></script>
     <script src="static/js/distpicker_main.js"></script>
