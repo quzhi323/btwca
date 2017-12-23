@@ -8,8 +8,8 @@
     mysqli_select_db($conn,"userdb");
     mysqli_set_charset($conn,'utf8');
 
-    $sql_dp = "select dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from cpdriverrec";
-    $sql_pd = "select dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from cppaxrec";
+    $sql_dp = "select cpdriverrec_id, dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from cpdriverrec";
+    $sql_pd = "select cppaxrec_id, dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from cppaxrec";
     $result_dp = $conn->query($sql_dp);
     $result_pd = $conn->query($sql_pd);
     $data_dp = array();
@@ -17,6 +17,7 @@
 
     class dfindp
     {
+        public $cpdriverrec_id;
         public $dept_add;
         public $dept_city;
         public $dept_prov;
@@ -33,6 +34,7 @@
 
     class pfindd
     {
+        public $cppaxrec_id;
         public $dept_add;
         public $dept_city;
         public $dept_prov;
@@ -55,6 +57,7 @@
         while ($row = mysqli_fetch_array($result_dp, MYSQL_ASSOC))
         {
             $dp = new dfindp();
+            $dp->cpdriverrec_id = $row['cpdriverrec_id'];
             $dp->dept_add = $row['dept_add'];
             $dp->dept_city = $row['dept_city'];
             $dp->dept_prov = $row['dept_prov'];
@@ -85,6 +88,7 @@
         while ($row = mysqli_fetch_array($result_pd, MYSQL_ASSOC))
         {
             $pd = new pfindd();
+            $pd->cppaxrec_id = $row['cppaxrec_id'];
             $pd->dept_add = $row['dept_add'];
             $pd->dept_city = $row['dept_city'];
             $pd->dept_prov = $row['dept_prov'];
