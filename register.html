@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>php.cn</title>
+ <meta charset="utf-8" />
+ <style>
+         .box{
+             width:250px;
+             height:120px;
+             background:#f0f0f0;
+         }
+    </style>
+ </head>
+ <body>
+     <!-- 注册界面  register.php-->
+      <div class="box">
+        <form action="/bytheway/regcheck.php" method="post"> 
+            <table>
+                <tr>
+                    <td align="right">Username:</td>
+                    <td><input type="text" name="username" value="Please enter username" maxLength="6"/></td>
+                </tr>
+                <tr>
+                    <td align="right">Enter Password</td>
+                    <td><input type="password" name="userpwd"  maxLength="6"/></td>
+                </tr>
+                <tr>
+                    <td align="right">Confirm Password:</td>
+                    <td><input type="password" name="confirm"  maxLength="6"/></td>
+                </tr>
+                <tr>
+                    <td colspa="2" align="right"><input type="submit" name="submit" value="Register"/></td>
+                </tr>
+             </table>
+        </form>
+    </div>   
+ </body>
+</html>
