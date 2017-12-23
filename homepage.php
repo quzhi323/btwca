@@ -453,8 +453,8 @@
         mysqli_select_db($conn,"userdb");
         mysqli_set_charset($conn,'utf8');
 
-        $sql_dp = "select dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from driverrec";
-        $sql_pd = "select dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from paxrec";
+        $sql_dp = "select dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from cpdriverrec";
+        $sql_pd = "select dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from cppaxrec";
         $result_dp = $conn->query($sql_dp);
         $result_pd = $conn->query($sql_pd);
         $data_dp = array();
@@ -609,15 +609,6 @@
 
         }
 
-
-
-
-
-
-
-
-
-    
 
 
 </script>

@@ -43,10 +43,10 @@ date_default_timezone_set('EST');
     
     if($flag)
     {
-        $paxrec_id = md5(uniqid()); // identifier
+        $cppaxrec_id = md5(uniqid()); // identifier
 
-        $sql1_insert = "insert into `paxrec` (`paxrec_id`,`dept_add`,`dept_city`,`dept_prov`,`dest_add`,`dest_city`,`dest_prov`,`wechat`,`phone`,`status`,`heat`,`pub_time`,`user_id`,`pax_num`,`descpt`,`datetime`) 
-        values('" . $paxrec_id . "','" . $dept_add . "','" . $dept_city ."','" . $dept_prov . "','" . $dest_add . "','" . $dest_city . "','" . $dest_prov . "','" . $wechat . "','" . $phone . "','" . $status . "','" . $heat . "','" . $pub_time . "','" . $user_id . "','" . $pax_num . "','" . $descpt . "','" . $datetime . "')"; 
+        $sql1_insert = "insert into `cppaxrec` (`cppaxrec_id`,`dept_add`,`dept_city`,`dept_prov`,`dest_add`,`dest_city`,`dest_prov`,`wechat`,`phone`,`status`,`heat`,`pub_time`,`user_id`,`pax_num`,`descpt`,`datetime`) 
+        values('" . $cppaxrec_id . "','" . $dept_add . "','" . $dept_city ."','" . $dept_prov . "','" . $dest_add . "','" . $dest_city . "','" . $dest_prov . "','" . $wechat . "','" . $phone . "','" . $status . "','" . $heat . "','" . $pub_time . "','" . $user_id . "','" . $pax_num . "','" . $descpt . "','" . $datetime . "')"; 
         $res1_insert = mysqli_query($conn,$sql1_insert);
 
         if($res1_insert) 
@@ -61,10 +61,10 @@ date_default_timezone_set('EST');
     
     else
     {
-        $driverrec_id = md5(uniqid()); // identifier
+        $cpdriverrec_id = md5(uniqid()); // identifier
 
-        $sql2_insert = "insert into `driverrec` (`driverrec_id`,`dept_add`,`dept_city`,`dept_prov`,`dest_add`,`dest_city`,`dest_prov`,`wechat`,`phone`,`status`,`heat`,`pub_time`,`user_id`,`pax_num`,`descpt`,`datetime`) 
-        values('" . $driverrec_id . "','" . $dept_add . "','" . $dept_city ."','" . $dept_prov . "','" . $dest_add . "','" . $dest_city . "','" . $dest_prov . "','" . $wechat . "','" . $phone . "','" . $status . "','" . $heat . "','" . $pub_time . "','" . $user_id . "','" . $pax_num . "','" . $descpt . "','" . $datetime . "')"; 
+        $sql2_insert = "insert into `cpdriverrec` (`cpdriverrec_id`,`dept_add`,`dept_city`,`dept_prov`,`dest_add`,`dest_city`,`dest_prov`,`wechat`,`phone`,`status`,`heat`,`pub_time`,`user_id`,`pax_num`,`descpt`,`datetime`) 
+        values('" . $cpdriverrec_id . "','" . $dept_add . "','" . $dept_city ."','" . $dept_prov . "','" . $dest_add . "','" . $dest_city . "','" . $dest_prov . "','" . $wechat . "','" . $phone . "','" . $status . "','" . $heat . "','" . $pub_time . "','" . $user_id . "','" . $pax_num . "','" . $descpt . "','" . $datetime . "')"; 
         $res2_insert = mysqli_query($conn,$sql2_insert);
 
         if($res2_insert) 
@@ -79,12 +79,12 @@ date_default_timezone_set('EST');
     }
 
 
-    // $sql2_insert = "insert into `paxrectime` (`paxrec_id`,`datetime`) values('" . $paxrec_id . "','" . $datetime . "')"; 
+    // $sql2_insert = "insert into `cppaxrectime` (`cppaxrec_id`,`datetime`) values('" . $cppaxrec_id . "','" . $datetime . "')"; 
     // $res2_insert = mysqli_query($conn,$sql2_insert);
 
     // insert passenger record time table
     // foreach ($datetimes as $datetime) {
-    //     $sql3_insert = "insert into `paxrectime` (`paxrec_id`,`datetime`) values('" . $paxrec_id . "','" . $datetime . "')"; 
+    //     $sql3_insert = "insert into `cppaxrectime` (`cppaxrec_id`,`datetime`) values('" . $cppaxrec_id . "','" . $datetime . "')"; 
     //     $res3_insert = mysqli_query($conn,$sql3_insert);
     // }
     // <form method="post" action="arrayformdata.php">
