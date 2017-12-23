@@ -17,7 +17,7 @@
 
     class dfindp
     {
-        public $cpdriverrec_id;
+        public $id;
         public $dept_add;
         public $dept_city;
         public $dept_prov;
@@ -34,7 +34,7 @@
 
     class pfindd
     {
-        public $cppaxrec_id;
+        public $id;
         public $dept_add;
         public $dept_city;
         public $dept_prov;
@@ -57,7 +57,7 @@
         while ($row = mysqli_fetch_array($result_dp, MYSQL_ASSOC))
         {
             $dp = new dfindp();
-            $dp->cpdriverrec_id = $row['cpdriverrec_id'];
+            $dp->id = $row['cpdriverrec_id'];
             $dp->dept_add = $row['dept_add'];
             $dp->dept_city = $row['dept_city'];
             $dp->dept_prov = $row['dept_prov'];
@@ -88,7 +88,7 @@
         while ($row = mysqli_fetch_array($result_pd, MYSQL_ASSOC))
         {
             $pd = new pfindd();
-            $pd->cppaxrec_id = $row['cppaxrec_id'];
+            $pd->id = $row['cppaxrec_id'];
             $pd->dept_add = $row['dept_add'];
             $pd->dept_city = $row['dept_city'];
             $pd->dept_prov = $row['dept_prov'];
