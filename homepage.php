@@ -450,12 +450,11 @@
 
     createRecord(drvier_pax,"carpool-findpax");
     createRecord(pax_driver,"carpool-findcar");
-
-
         function createRecord(record_list,parent_id) {
             var carpool_record =document.getElementById(parent_id);
             var table = document.createElement("table");
             table.setAttribute("className","table");
+            table.setAttribute("className","table-hover");
             var tbody = document.createElement("tbody");
 
             var thead=document.createElement("thead");
@@ -478,6 +477,9 @@
 
                 var tr = document.createElement("tr");
 
+
+                tr.setAttribute("className","success");
+
                 var td1= document.createElement("td");
                 td1.innerHTML=record_list[i].dept_add;
                 tr.append(td1);
@@ -492,7 +494,20 @@
                 tbody.append(tr);
             }
             table.append(tbody);
-            carpool_record.append(table);
+
+            var span = document.createElement("div");
+            var fluid_row = document.createElement("div");
+            var container = document.createElement("div");
+
+            span.setAttribute("className","span12");
+            fluid_row.setAttribute("className","row-fluid");
+            container.setAttribute("className","container-fluid");
+
+
+            span.append(table);
+            fluid_row.append(span);
+            container.append(fluid_row);
+            carpool_record.append(container);
 
         }
 
