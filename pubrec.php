@@ -30,16 +30,6 @@ date_default_timezone_set('EST');
     $pax_num = $_POST["pax_num"];
     $descpt = $_POST["descpt"];
     $datetime = date("y-m-d h:i:s", $_POST["datetime"]);
-
-    // $datetimes = $_POST['tags'];// list of time
-    
-
-    // $sql = "select user_id, username,userpwd from user where user_id = '$user_id'";
-    // $result = mysqli_query($conn,$sql);
-    // $row = mysqli_fetch_assoc($result);
-    // $num = mysqli_num_rows($result); 
-
-    //insert the passenger record table
     
     if($flag)
     {
@@ -77,27 +67,6 @@ date_default_timezone_set('EST');
         }
 
     }
-
-
-    // $sql2_insert = "insert into `cppaxrectime` (`cppaxrec_id`,`datetime`) values('" . $cppaxrec_id . "','" . $datetime . "')"; 
-    // $res2_insert = mysqli_query($conn,$sql2_insert);
-
-    // insert passenger record time table
-    // foreach ($datetimes as $datetime) {
-    //     $sql3_insert = "insert into `cppaxrectime` (`cppaxrec_id`,`datetime`) values('" . $cppaxrec_id . "','" . $datetime . "')"; 
-    //     $res3_insert = mysqli_query($conn,$sql3_insert);
-    // }
-    // <form method="post" action="arrayformdata.php">
-    // <label>Tags</label>
-    // <input type="text" name="tags[]"/>
-    // <input type="text" name="tags[]"/>
-    // <input type="text" name="tags[]"/>
-    // <input type="text" name="tags[]"/>
-    // <input type="text" name="tags[]"/>
-    // <input type="submit" value="submit">
-    // </form>
-    // </html>
-    // } 
  } 
  else 
  { 
