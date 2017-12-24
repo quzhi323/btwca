@@ -415,7 +415,7 @@
     if (user!=0){
 
         var sb = document.getElementById("signin_btn");
-        var ub = document.getElementbyId("username_btn");
+        var ub = document.getElementById("username_btn");
 
         sb.style.visibility="hidden";
         ub.style.visibility="visible";
