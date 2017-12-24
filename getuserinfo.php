@@ -11,24 +11,11 @@
             	public $username;
             }
 
-   //      	print("<html><b>");
-			// $sid = session_id();
-			// print("Session ID returned by session_id(): ".$sid."\n");
-
-			// $user_id = $_SESSION["user_id"];
-			// $username = $_SESSION["username"];
-			// print("user_id: ".$user_id."\n");
-			// print("username: ".$username."\n");
-			// print("</b></html>\n");
-
-
 			$user = new userinfo();
 			$user->user_id = $_SESSION['user_id'];
 			$user->$username = $_SESSION['username'];
 			$data_user[]=$user;
 			$json_user = json_encode($data_user);
-			echo "<script> var user = $json_user ; alert(user[0].user_id)</script>";
+			echo "<script> var user = $json_user ; </script>";
 
-
- 
 ?> 

@@ -52,13 +52,7 @@
 
                 var dest_prov = document.getElementById("dest_prov");
                 dest_prov.value = $("#target-province option:selected").val();
-
-//                var radio = document.getElementsByName("flag");
-//                for (i = 0; i < radio.length; i++) {
-//                    if (radio[i].checked) {
-//                        alert(radio[i].value)
-//                    }
-//                }
+                
                 var pax_num = document.getElementById("pax_num");
 
                 pax_num.value = $("#pax_num_sel option:selected").val();
@@ -68,19 +62,6 @@
                 descpt.value = $("#descpt_input").val();
 
             });
-
-
-
-//            createRecord("carpool-findall")
-//
-//            function createRecord(parent_id) {
-//
-//                var parent = document.getElementById(parent_id)
-//
-//            }
-//
-
-
 
         });
         function Sign() {
@@ -112,7 +93,8 @@
                     <button type="submit" class="btn btn-info">Search</button>
                 </form>
                 <!--<li><a href="#" style="color: ghostwhite"> Username</a></li>-->
-                <button type="button" class="btn btn-primary navbar-btn" onclick="Sign()">Sign in</button>
+                <button type="button" id="signin_btn" class="btn btn-primary navbar-btn" onclick="Sign()" style="visibility:visible">Sign in</button>
+                <button type="button" id="username_btn" class="btn btn-primary navbar-btn" onclick="Sign()" style="visibility: hidden"></button>
                 <button type="button" class="btn btn-primary navbar-btn" onclick="Sign()">Register</button>
 
                 <!--<li><a href="#" style="color: ghostwhite"> Sign Out</a></li>-->
@@ -423,6 +405,25 @@
 
 <?php include 'showcprec.php';?>
 
+<script>
+    var user=0;
+</script>
+<?php include 'getuserinfo.php';?>
+
+<script type="text/javascript">
+    
+    if (user!=0){
+
+        var sb = document.getElementById("signin_btn");
+        var ub = document.getElementbyId("username_btn");
+
+        sb.style.visibility="hidden";
+        ub.style.visibility="visible";
+        ub.innerHTML=user[0].username;
+
+    }
+</script>
+
 
 <script>
 
@@ -517,7 +518,6 @@
 
 </script>
 <script>
-
     function createModal(id,time,phone,wechat,descpt,dept,dest){
 
         var mod = document.createElement("div");
