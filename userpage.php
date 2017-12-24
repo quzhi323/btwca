@@ -68,7 +68,7 @@
     </div>
 </div>
 
-<?php include 'showuserrec.php';?>
+<?php include 'showuserrec.php';?> <!-- 某个user发的所有帖子-->
 
 <script>
     

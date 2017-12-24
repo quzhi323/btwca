@@ -8,14 +8,14 @@
     mysqli_select_db($conn,"userdb");
     mysqli_set_charset($conn,'utf8');
 
-    $sql_dp = "select cpdriverrec_id, dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from cpdriverrec";
-    $sql_pd = "select cppaxrec_id, dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from cppaxrec";
-    $result_dp = $conn->query($sql_dp);
-    $result_pd = $conn->query($sql_pd);
-    $data_dp = array();
-    $data_pd = array();
+    $sql_cpdp = "select cpdriverrec_id, dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from cpdriverrec";
+    $sql_cppd = "select cppaxrec_id, dept_add, dept_city, dept_prov, dest_add, dest_city, dest_prov, wechat, phone, pub_time, pax_num, descpt, datetime from cppaxrec";
+    $result_cpdp = $conn->query($sql_cpdp);
+    $result_cppd = $conn->query($sql_cppd);
+    $data_cpdp = array();
+    $data_cppd = array();
 
-    class dfindp
+    class cpdfindp
     {
         public $id;
         public $dept_add;
@@ -32,7 +32,7 @@
         public $datetime;
     }
 
-    class pfindd
+    class cppfindd
     {
         public $id;
         public $dept_add;
@@ -50,61 +50,61 @@
     }
 
 
-    if($result_dp)
+    if($result_cpdp)
     {
         // session_start();
 
-        while ($row = mysqli_fetch_array($result_dp, MYSQL_ASSOC))
+        while ($row = mysqli_fetch_array($result_cpdp, MYSQL_ASSOC))
         {
-            $dp = new dfindp();
-            $dp->id = $row['cpdriverrec_id'];
-            $dp->dept_add = $row['dept_add'];
-            $dp->dept_city = $row['dept_city'];
-            $dp->dept_prov = $row['dept_prov'];
-            $dp->dest_add = $row['dest_add'];
-            $dp->dest_city = $row['dest_city'];
-            $dp->dest_prov = $row['dest_prov'];
-            $dp->wechat = $row['wechat'];
-            $dp->phone = $row['phone'];
-            $dp->pub_time = $row['pub_time'];
-            $dp->pax_num = $row['pax_num'];
-            $dp->descpt = $row['descpt'];
-            $dp->datetime = $row['datetime'];
-            $data_dp[]=$dp;
+            $cpdp = new cpdfindp();
+            $cpdp->id = $row['cpdriverrec_id'];
+            $cpdp->dept_add = $row['dept_add'];
+            $cpdp->dept_city = $row['dept_city'];
+            $cpdp->dept_prov = $row['dept_prov'];
+            $cpdp->dest_add = $row['dest_add'];
+            $cpdp->dest_city = $row['dest_city'];
+            $cpdp->dest_prov = $row['dest_prov'];
+            $cpdp->wechat = $row['wechat'];
+            $cpdp->phone = $row['phone'];
+            $cpdp->pub_time = $row['pub_time'];
+            $cpdp->pax_num = $row['pax_num'];
+            $cpdp->descpt = $row['descpt'];
+            $cpdp->datetime = $row['datetime'];
+            $data_cpdp[]=$cpdp;
             // echo "<tr><td>$user_id</td><td>$username</td></tr>";
         }
-        $json_dp = json_encode($data_dp);
-         echo "<script> var drvier_pax = $json_dp ;</script>";
+        $json_cpdp = json_encode($data_cpdp);
+         echo "<script> var cp_drvier_pax = $json_cpdp ;</script>";
 
     }else{
         echo "failed";
     }
 
 
-    if($result_pd)
+    if($result_cppd)
     {
         // session_start();
 
-        while ($row = mysqli_fetch_array($result_pd, MYSQL_ASSOC))
+        while ($row = mysqli_fetch_array($result_cppd, MYSQL_ASSOC))
         {
-            $pd = new pfindd();
-            $pd->id = $row['cppaxrec_id'];
-            $pd->dept_add = $row['dept_add'];
-            $pd->dept_city = $row['dept_city'];
-            $pd->dept_prov = $row['dept_prov'];
-            $pd->dest_add = $row['dest_add'];
-            $pd->dest_city = $row['dest_city'];
-            $pd->dest_prov = $row['dest_prov'];
-            $pd->wechat = $row['wechat'];
-            $pd->phone = $row['phone'];
-            $pd->pub_time = $row['pub_time'];
-            $pd->pax_num = $row['pax_num'];
-            $pd->descpt = $row['descpt'];
-            $pd->datetime = $row['datetime'];
-            $data_pd[]=$pd;
+            $cppd = new cppfindd();
+            $cppd->id = $row['cppaxrec_id'];
+            $cppd->dept_add = $row['dept_add'];
+            $cppd->dept_city = $row['dept_city'];
+            $cppd->dept_prov = $row['dept_prov'];
+            $cppd->dest_add = $row['dest_add'];
+            $cppd->dest_city = $row['dest_city'];
+            $cppd->dest_prov = $row['dest_prov'];
+            $cppd->wechat = $row['wechat'];
+            $cppd->phone = $row['phone'];
+            $cppd->pub_time = $row['pub_time'];
+            $cppd->pax_num = $row['pax_num'];
+            $cppd->descpt = $row['descpt'];
+            $cppd->datetime = $row['datetime'];
+            $data_cppd[]=$cppd;
         }
-        $json_pd = json_encode($data_pd);
-         echo "<script> var pax_driver = $json_pd ;</script>";
+        $json_cppd = json_encode($data_cppd);
+         echo "<script> var cp_pax_driver = $json_cppd ;</script>";
 
     }else{
         echo "failed";

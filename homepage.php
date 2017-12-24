@@ -428,8 +428,8 @@
 
 <script>
 
-    createRecord(drvier_pax,"carpool-findpax");
-    createRecord(pax_driver,"carpool-findcar");
+    createRecord(cp_drvier_pax,"carpool-findpax");
+    createRecord(cp_pax_driver,"carpool-findcar");
         function createRecord(record_list,parent_id) {
             var carpool_record =document.getElementById(parent_id);
             var table = document.createElement("table");
