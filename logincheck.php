@@ -31,7 +31,7 @@
                 session_start();
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['username'] = $row['username'];
-                echo "<script>alert('成功登录'); window.location.href='getuserinfo.php';</script>";
+                echo "<script>alert('成功登录'); window.location.href='homepage.php';</script>";
             } 
             else 
             { 

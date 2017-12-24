@@ -11,11 +11,19 @@
             	public $username;
             }
 
+
 			$user = new userinfo();
 			$user->user_id = $_SESSION['user_id'];
-			$user->$username = $_SESSION['username'];
+			$user->username = $_SESSION['username'];
 			$data_user[]=$user;
 			$json_user = json_encode($data_user);
-			echo "<script> var user = $json_user ; </script>";
+			echo "<script> var user = $json_user ; alert(user[0].username);</script>";
+
+			// print("<html><b>");
+			// $user_id = $_SESSION["user_id"];
+			// print("Value of mysite has been retrieved: ".$user_id."\n");
+			// $username = $_SESSION["username"];
+			// print("Value of mysite has been retrieved: ".$username."\n");
+			// print("</b></html>\n");
 
 ?> 
