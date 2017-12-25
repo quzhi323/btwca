@@ -1,4 +1,13 @@
- <?php 
+ <?php
+    if(isset($_SESSION['user_id']))
+    {
+        $user = $_SESSION['user_id'];
+    }
+    else
+    {
+        
+    }
+
     $conn = mysqli_connect("localhost","root","");//数据库帐号密码为安装数据库时设置
     if(mysqli_errno($conn))
     {

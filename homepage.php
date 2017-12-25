@@ -1,3 +1,13 @@
+<?php
+    if(isset($_SESSION['user_id']))
+    {
+        $user = $_SESSION['user_id'];
+    }
+    else
+    {
+        session_start();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -419,7 +429,7 @@
 
         sb.style.visibility="hidden";
         ub.style.visibility="visible";
-        alert(user[0].username);
+        // alert(user[0].username);
         ub.innerHTML=user[0].username;
 
     }
