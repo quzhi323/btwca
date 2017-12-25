@@ -70,6 +70,6 @@
     } 
     else 
     { 
-        echo "<script>alert('发布未成功！'); history.go(-1);</script>"; 
+        echo "<script>alert('发布未成功，请登录！'); history.go(-1);</script>"; 
     } 
 ?> 
