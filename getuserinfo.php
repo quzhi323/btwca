@@ -2,7 +2,7 @@
 //登录处理界面 logincheck.php
 //判断是否按下提交按钮
 		// session_start();
-		if(isset($_SESSION['user_id']))
+		if(isset($_SESSION['user_id'])&&isset($_SESSION['username']))
 		{
     		// $user = $_SESSION['user_id'];
     		// $user_id =   $_SESSION['user_id'];

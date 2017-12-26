@@ -1,5 +1,5 @@
 <?php
-    if(isset($_SESSION['user_id']))
+    if(isset($_SESSION['user_id'])&&isset($_SESSION['username']))
     {
         $user_id = $_SESSION['user_id'];
         $username =   $_SESSION['username'];
