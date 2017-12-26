@@ -4,9 +4,9 @@
 		// session_start();
 		if(isset($_SESSION['user_id']))
 		{
-    		$user = $_SESSION['user_id'];
-    		$user_id =   $_SESSION['user_id'];
-        	$username =   $_SESSION['username'];
+    		// $user = $_SESSION['user_id'];
+    		// $user_id =   $_SESSION['user_id'];
+      //   	$username =   $_SESSION['username'];
 
         	class userinfo
         	{
