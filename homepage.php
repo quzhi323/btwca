@@ -92,7 +92,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <h4 style="color: ghostwhite;margin-top: 8%;font-family: STKaiti ">加拿大华人互助平台</h4>
+            <h4 style="color: ghostwhite;margin-top: 8%;font-family: STKaiti ">By The Way, Canada</h4>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left: 30%">
@@ -130,7 +130,10 @@
                                     <a href="#carpool" data-toggle="tab">顺风车</a>
                                 </li>
                                 <li>
-                                    <a href="#deliver" data-toggle="tab">带物</a>
+                                    <a href="#takethings" data-toggle="tab">带物</a>
+                                </li>
+                                <li>
+                                    <a href="#airport" data-toggle="tab">接送机</a>
                                 </li>
 
                             </ul>
@@ -389,9 +392,15 @@
                                     </div>
 
                                 </div>
-                                <div class="tab-pane" id="deliver">
+                                <div class="tab-pane" id="takethings">
                                     <p>
-                                        Deliver
+                                        takethings
+                                    </p>
+
+                                </div>
+                                <div class="tab-pane" id="airport">
+                                    <p>
+                                        airport
                                     </p>
 
                                 </div>
