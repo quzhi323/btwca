@@ -164,7 +164,23 @@
 
                                                     <div class="tab-pane active" id="carpool-findpax">
 
+                                                    <div>
+                                                        <a id="btn0_mytable"></a>
+                                                        <input id="pageSize_mytable" type="text" size="1" maxlength="2" value="getDefaultValue()"/><a> 条 </a> <a href="#"
+                                                                                                                                                         id="pageSizeSet">设置</a>
+                                                        <a id="sjzl_mytable"></a>
+                                                        <a href="#" id="btn1_mytable">首页</a>
+                                                        <a href="#" id="btn2_mytable">上一页</a>
+                                                        <a href="#" id="btn3_mytable">下一页</a>
+                                                        <a href="#" id="btn4_mytable">尾页</a>
+                                                        <a>转到 </a>
+                                                        <input id="changePage_mytable" type="text" size="1" maxlength="4"/>
+                                                        <a>页 </a>
+                                                        <a href="#" id="btn5_mytable">跳转</a>
+
                                                     </div>
+                                                    </div>
+
                                                     <div class="tab-pane" id="carpool-findcar">
 
                                                     </div>
@@ -454,6 +470,8 @@
             var carpool_record =document.getElementById(parent_id);
             var table = document.createElement("table");
             table.setAttribute("class","table table-hover");
+            var table_id = "table"+parent_id;
+            table.setAttribute("id",table_id);
             var tbody = document.createElement("tbody");
             var thead=document.createElement("thead");
             var tr=document.createElement("tr");
@@ -630,6 +648,12 @@
 
     }
 </script>
+
+
+
+
+
+
 
 </body>
 </html>

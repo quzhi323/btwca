@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>ByTheWay carpool</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap Css -->
+    <link href="static/bootstrap-assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Style -->
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="static/css/bootstrap.min.css"/>
+    <link href="static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="static/css/prettify-1.0.css" rel="stylesheet">
+    <link href="static/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/default.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.js"></script>
+    <script src="static/js/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="static/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/moment-with-locales.js"></script>
+    <script src="static/js/bootstrap-datetimepicker.js"></script>
+
+    <script src="static/js/distpicker.data.js"></script>
+    <script src="static/js/distpicker.js"></script>
+    <script src="static/js/distpicker_main.js"></script>
+</head>
+<body>
+
+
+<script type="text/javascript">
+    var pageSize = 3;    //每页显示的记录条数
+    var curPage=0;        //当前页
+    var lastPage;        //最后页
+    var direct=0;        //方向
+    var len;            //总行数
+    var page;            //总页数
+    var begin;
+    var end;
+
+
+    $(document).ready(function display(){
+
+        createPag("mytable");
+
+        function createPag(table_id){
+
+            var tb = $("#"+table_id) ;
+            len =tb.find("tr").length; - 1;    // 求这个表的总行数，剔除第一行介绍
+            page=len % pageSize==0 ? len/pageSize : Math.floor(len/pageSize)+1;//根据记录条数，计算页数
+            curPage=1;    // 设置当前为第一页
+            displayPage(tb,table_id);//显示第一页
+
+            document.getElementById("btn0"+"_"+table_id).innerHTML="当前 " + curPage + "/" + page + " 页    每页 ";    // 显示当前多少页
+            document.getElementById("sjzl"+"_"+table_id).innerHTML="数据总量 " + len + "";        // 显示数据量
+            document.getElementById("pageSize"+"_"+table_id).value = pageSize;
+
+
+
+            $("#"+"btn1"+"_"+table_id).click(function firstPage(){    // 首页
+                curPage=1;
+                direct = 0;
+                displayPage(tb,table_id);
+            });
+
+            $("#"+"btn2"+"_"+table_id).click(function frontPage(){    // 上一页
+                direct=-1;
+                displayPage(tb,table_id);
+            });
+
+            $("#"+"btn3"+"_"+table_id).click(function nextPage(){    // 下一页
+                direct=1;
+                displayPage(tb,table_id);
+            });
+
+            $("#"+"btn4"+"_"+table_id).click(function lastPage(){    // 尾页
+                curPage=page;
+                direct = 0;
+                displayPage(tb,table_id);
+            });
+
+            $("#"+"btn5"+"_"+table_id).click(function changePage(){    // 转页
+                curPage=document.getElementById("changePage"+"_"+table_id).value * 1;
+                if (!/^[1-9]\d*$/.test(curPage)) {
+                    alert("请输入正整数");
+                    return ;
+                }
+                if (curPage > page) {
+                    alert("超出数据页面");
+                    return ;
+                }
+                direct = 0;
+                displayPage(tb,table_id);
+            });
+
+
+
+            $("#"+"pageSizeSet"+"_"+table_id).click(function setPageSize(){    // 设置每页显示多少条记录
+                pageSize = document.getElementById("pageSize"+"_"+table_id).value;    //每页显示的记录条数
+                if (!/^[1-9]\d*$/.test(pageSize)) {
+                    alert("请输入正整数");
+                    return ;
+                }
+                len =tb.find("tr").length - 1;
+                page=len % pageSize==0 ? len/pageSize : Math.floor(len/pageSize)+1;//根据记录条数，计算页数
+                curPage=1;        //当前页
+                direct=0;        //方向
+                firstPage();
+            });
+
+
+        }
+
+
+
+
+    });
+
+    function displayPage(table_dom,table_id){
+
+        var len2 =table_dom.find("tr").length;
+
+        if(curPage <=1 && direct==-1){
+            direct=0;
+            alert("已经是第一页了");
+            return;
+        } else if (curPage >= page && direct==1) {
+            direct=0;
+            alert("已经是最后一页了");
+            return ;
+        }
+
+        lastPage = curPage;
+
+        // 修复当len=1时，curPage计算得0的bug
+        if (len > pageSize) {
+            curPage = ((curPage + direct + len) % len);
+        } else {
+            curPage = 1;
+        }
+
+
+        document.getElementById("btn0"+"_"+table_id).innerHTML="当前 " + curPage + "/" + page + " 页    每页 ";        // 显示当前多少页
+
+        begin=(curPage-1)*pageSize + 1;// 起始记录号
+        end = begin + 1*pageSize - 1;    // 末尾记录号
+
+
+        if(end > len ) end=len;
+        table_dom.find("tr").hide();
+//        $("#mytable tr").hide();    // 首先，设置这行为隐藏
+        table_dom.find("tr").each(function(i){    // 然后，通过条件判断决定本行是否恢复显示
+            if((i>=begin && i<=end) || i==0 )//显示begin<=x<=end的记录
+                $(this).show();
+        });
+//        $("#mytable tr").each(function(i){    // 然后，通过条件判断决定本行是否恢复显示
+//            if((i>=begin && i<=end) || i==0 )//显示begin<=x<=end的记录
+//                $(this).show();
+//        });
+    }
+</script>
+
+<a id="btn0_mytable"></a>
+<input id="pageSize_mytable" type="text" size="1" maxlength="2" value="getDefaultValue()"/><a> 条 </a> <a href="#"
+                                                                                                 id="pageSizeSet">设置</a>
+<a id="sjzl_mytable"></a>
+<a href="#" id="btn1_mytable">首页</a>
+<a href="#" id="btn2_mytable">上一页</a>
+<a href="#" id="btn3_mytable">下一页</a>
+<a href="#" id="btn4_mytable">尾页</a>
+<a>转到 </a>
+<input id="changePage_mytable" type="text" size="1" maxlength="4"/>
+<a>页 </a>
+<a href="#" id="btn5_mytable">跳转</a>
+
+<table id="mytable" align="center" class="table">
+
+        <thead>
+        <tr>
+            <th>
+                编号
+            </th>
+            <th>
+                产品
+            </th>
+            <th>
+                交付时间
+            </th>
+            <th>
+                状态
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                TB - Monthly
+            </td>
+            <td>
+                01/04/2012
+            </td>
+            <td>
+                Default
+            </td>
+        </tr>
+        <tr class="success">
+            <td>
+                1
+            </td>
+            <td>
+                TB - Monthly
+            </td>
+            <td>
+                01/04/2012
+            </td>
+            <td>
+                Approved
+            </td>
+        </tr>
+        <tr class="error">
+            <td>
+                2
+            </td>
+            <td>
+                TB - Monthly
+            </td>
+            <td>
+                02/04/2012
+            </td>
+            <td>
+                Declined
+            </td>
+        </tr>
+        <tr class="warning">
+            <td>
+                3
+            </td>
+            <td>
+                TB - Monthly
+            </td>
+            <td>
+                03/04/2012
+            </td>
+            <td>
+                Pending
+            </td>
+        </tr>
+        <tr class="info">
+            <td>
+                4
+            </td>
+            <td>
+                TB - Monthly
+            </td>
+            <td>
+                04/04/2012
+            </td>
+            <td>
+                Call in to confirm
+            </td>
+        </tr>
+        </tbody>
+
+</table>
+</body>
+</html>
