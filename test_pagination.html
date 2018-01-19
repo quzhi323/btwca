@@ -2,143 +2,128 @@
 <html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>ByTheWay carpool</title>
+    <title>ByTheWay</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <!-- Bootstrap Css -->
-    <link href="static/bootstrap-assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Style -->
-    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="static/css/bootstrap.min.css"/>
-    <link href="static/css/font-awesome.min.css" rel="stylesheet">
-    <link href="static/css/prettify-1.0.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="static/css/bootstrap-datetimepicker.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="static/css/default.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
     <script src="static/js/html5shiv.js"></script>
     <script src="static/js/respond.min.js"></script>
-    <![endif]-->
-    <script type="text/javascript" src="static/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
     <script src="static/js/moment-with-locales.js"></script>
     <script src="static/js/bootstrap-datetimepicker.js"></script>
-
     <script src="static/js/distpicker.data.js"></script>
     <script src="static/js/distpicker.js"></script>
     <script src="static/js/distpicker_main.js"></script>
+
+
 </head>
-<body>
+
+<body id="body">
 
 
 <script type="text/javascript">
+
+
     var pageSize = 3;    //每页显示的记录条数
-    var curPage=0;        //当前页
+    var curPage = 0;        //当前页
     var lastPage;        //最后页
-    var direct=0;        //方向
+    var direct = 0;        //方向
     var len;            //总行数
     var page;            //总页数
     var begin;
     var end;
 
 
-    $(document).ready(function display(){
+    function createPag(table_id) {
+        alert("enter");
 
-        createPag("mytable");
+        var tb = $("#" + table_id);
+        len = tb.find("tr").length;
+        -1;    // 求这个表的总行数，剔除第一行介绍
+        page = len % pageSize == 0 ? len / pageSize : Math.floor(len / pageSize) + 1;//根据记录条数，计算页数
+        curPage = 1;    // 设置当前为第一页
+        displayPage(tb, table_id);//显示第一页
 
-        function createPag(table_id){
-
-            var tb = $("#"+table_id) ;
-            len =tb.find("tr").length; - 1;    // 求这个表的总行数，剔除第一行介绍
-            page=len % pageSize==0 ? len/pageSize : Math.floor(len/pageSize)+1;//根据记录条数，计算页数
-            curPage=1;    // 设置当前为第一页
-            displayPage(tb,table_id);//显示第一页
-
-            document.getElementById("btn0"+"_"+table_id).innerHTML="当前 " + curPage + "/" + page + " 页    每页 ";    // 显示当前多少页
-            document.getElementById("sjzl"+"_"+table_id).innerHTML="数据总量 " + len + "";        // 显示数据量
-            document.getElementById("pageSize"+"_"+table_id).value = pageSize;
+        document.getElementById("btn0" + "_" + table_id).innerHTML = "当前 " + curPage + "/" + page + " 页    每页 ";    // 显示当前多少页
+        document.getElementById("sjzl" + "_" + table_id).innerHTML = "数据总量 " + len + "";        // 显示数据量
+        document.getElementById("pageSize" + "_" + table_id).value = pageSize;
 
 
+        $("#" + "btn1" + "_" + table_id).click(function firstPage() {    // 首页
+            curPage = 1;
+            direct = 0;
+            displayPage(tb, table_id);
+        });
 
-            $("#"+"btn1"+"_"+table_id).click(function firstPage(){    // 首页
-                curPage=1;
-                direct = 0;
-                displayPage(tb,table_id);
-            });
+        $("#" + "btn2" + "_" + table_id).click(function frontPage() {    // 上一页
+            direct = -1;
+            displayPage(tb, table_id);
+        });
 
-            $("#"+"btn2"+"_"+table_id).click(function frontPage(){    // 上一页
-                direct=-1;
-                displayPage(tb,table_id);
-            });
+        $("#" + "btn3" + "_" + table_id).click(function nextPage() {    // 下一页
+            direct = 1;
+            displayPage(tb, table_id);
+        });
 
-            $("#"+"btn3"+"_"+table_id).click(function nextPage(){    // 下一页
-                direct=1;
-                displayPage(tb,table_id);
-            });
+        $("#" + "btn4" + "_" + table_id).click(function lastPage() {    // 尾页
+            curPage = page;
+            direct = 0;
+            displayPage(tb, table_id);
+        });
 
-            $("#"+"btn4"+"_"+table_id).click(function lastPage(){    // 尾页
-                curPage=page;
-                direct = 0;
-                displayPage(tb,table_id);
-            });
-
-            $("#"+"btn5"+"_"+table_id).click(function changePage(){    // 转页
-                curPage=document.getElementById("changePage"+"_"+table_id).value * 1;
-                if (!/^[1-9]\d*$/.test(curPage)) {
-                    alert("请输入正整数");
-                    return ;
-                }
-                if (curPage > page) {
-                    alert("超出数据页面");
-                    return ;
-                }
-                direct = 0;
-                displayPage(tb,table_id);
-            });
-
+        $("#" + "btn5" + "_" + table_id).click(function changePage() {    // 转页
+            curPage = document.getElementById("changePage" + "_" + table_id).value * 1;
+            if (!/^[1-9]\d*$/.test(curPage)) {
+                alert("请输入正整数");
+                return;
+            }
+            if (curPage > page) {
+                alert("超出数据页面");
+                return;
+            }
+            direct = 0;
+            displayPage(tb, table_id);
+        });
 
 
-            $("#"+"pageSizeSet"+"_"+table_id).click(function setPageSize(){    // 设置每页显示多少条记录
-                pageSize = document.getElementById("pageSize"+"_"+table_id).value;    //每页显示的记录条数
-                if (!/^[1-9]\d*$/.test(pageSize)) {
-                    alert("请输入正整数");
-                    return ;
-                }
-                len =tb.find("tr").length - 1;
-                page=len % pageSize==0 ? len/pageSize : Math.floor(len/pageSize)+1;//根据记录条数，计算页数
-                curPage=1;        //当前页
-                direct=0;        //方向
-                firstPage();
-            });
+        $("#" + "pageSizeSet" + "_" + table_id).click(function setPageSize() {    // 设置每页显示多少条记录
+            pageSize = document.getElementById("pageSize" + "_" + table_id).value;    //每页显示的记录条数
+            if (!/^[1-9]\d*$/.test(pageSize)) {
+                alert("请输入正整数");
+                return;
+            }
+            len = tb.find("tr").length - 1;
+            page = len % pageSize == 0 ? len / pageSize : Math.floor(len / pageSize) + 1;//根据记录条数，计算页数
+            curPage = 1;        //当前页
+            direct = 0;        //方向
+            firstPage();
+        });
 
 
-        }
+    }
 
 
 
+    function displayPage(table_dom, table_id) {
 
-    });
+        var len2 = table_dom.find("tr").length;
 
-    function displayPage(table_dom,table_id){
-
-        var len2 =table_dom.find("tr").length;
-
-        if(curPage <=1 && direct==-1){
-            direct=0;
+        if (curPage <= 1 && direct == -1) {
+            direct = 0;
             alert("已经是第一页了");
             return;
-        } else if (curPage >= page && direct==1) {
-            direct=0;
+        } else if (curPage >= page && direct == 1) {
+            direct = 0;
             alert("已经是最后一页了");
-            return ;
+            return;
         }
 
         lastPage = curPage;
@@ -150,18 +135,16 @@
             curPage = 1;
         }
 
-
-        document.getElementById("btn0"+"_"+table_id).innerHTML="当前 " + curPage + "/" + page + " 页    每页 ";        // 显示当前多少页
-
-        begin=(curPage-1)*pageSize + 1;// 起始记录号
-        end = begin + 1*pageSize - 1;    // 末尾记录号
+        document.getElementById("btn0" + "_" + table_id).innerHTML = "当前 " + curPage + "/" + page + " 页    每页 ";        // 显示当前多少页
+        begin = (curPage - 1) * pageSize + 1;// 起始记录号
+        end = begin + 1 * pageSize - 1;    // 末尾记录号
 
 
-        if(end > len ) end=len;
+        if (end > len) end = len;
         table_dom.find("tr").hide();
 //        $("#mytable tr").hide();    // 首先，设置这行为隐藏
-        table_dom.find("tr").each(function(i){    // 然后，通过条件判断决定本行是否恢复显示
-            if((i>=begin && i<=end) || i==0 )//显示begin<=x<=end的记录
+        table_dom.find("tr").each(function (i) {    // 然后，通过条件判断决定本行是否恢复显示
+            if ((i >= begin && i <= end) || i == 0)//显示begin<=x<=end的记录
                 $(this).show();
         });
 //        $("#mytable tr").each(function(i){    // 然后，通过条件判断决定本行是否恢复显示
@@ -171,110 +154,384 @@
     }
 </script>
 
-<a id="btn0_mytable"></a>
-<input id="pageSize_mytable" type="text" size="1" maxlength="2" value="getDefaultValue()"/><a> 条 </a> <a href="#"
-                                                                                                 id="pageSizeSet">设置</a>
-<a id="sjzl_mytable"></a>
-<a href="#" id="btn1_mytable">首页</a>
-<a href="#" id="btn2_mytable">上一页</a>
-<a href="#" id="btn3_mytable">下一页</a>
-<a href="#" id="btn4_mytable">尾页</a>
+
+<div>
+
+    选择出发地(city)
+
+
+    <label><input name="dept" type="checkbox" value="hamilton"/>hamilton </label>
+    <label><input name="dept" type="checkbox" value="others"/>others </label>
+
+
+
+    <button onclick="showCheck()">提交</button>
+
+
+</div>
+
+<script>
+
+    var xmlHttp;
+
+    function showCheck() {
+
+        var dept_array = new Array();
+        $('input[name="dept"]:checked').each(function () {
+            dept_array.push($(this).val());//向数组中添加元素
+        });
+
+        var str = dept_array.join(',');//将数组元素连接起来以构建一个字符串
+
+        alert(str);
+
+        if (str.length==0)
+        {
+            return
+        }
+        xmlHttp=GetXmlHttpObject();
+        if (xmlHttp==null)
+        {
+            alert ("Browser does not support HTTP Request");
+            return
+        }
+
+        var url="test_ajax_pagination.php";
+        url=url+"?conditions="+str;
+        url=url+"&sid="+Math.random();
+        xmlHttp.onreadystatechange=stateChanged;
+        xmlHttp.open("GET",url,true);
+        xmlHttp.send(null);
+
+    }
+
+    function stateChanged()
+    {
+        if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
+        {
+//            document.getElementById("table").innerHTML=xmlHttp.responseText;
+
+            // var rsp = xmlHttp.responseText;
+            // document.getElementById("show_records").innerHTML=rsp;
+
+//            alert(xmlHttp.responseText);
+            var rsp=JSON.parse(xmlHttp.responseText);
+            createRecord(rsp,"show_records");
+
+            createPag("table"+"show_records");
+
+            alert(rsp);
+        }
+    }
+
+    function GetXmlHttpObject()
+    {
+        var xmlHttp=null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch (e)
+        {
+            // Internet Explorer
+            try
+            {
+                xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e)
+            {
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }
+
+    function createRecord(record_list,parent_id) {
+        var carpool_record =document.getElementById(parent_id);
+        var table = document.createElement("table");
+        table.setAttribute("class","table table-hover");
+        var table_id = "table"+parent_id;
+        table.setAttribute("id",table_id);
+        var tbody = document.createElement("tbody");
+        var thead=document.createElement("thead");
+        var tr=document.createElement("tr");
+        var th1=document.createElement("th");
+        th1.innerHTML="出发地";
+        tr.append(th1);
+
+        var th2=document.createElement("th");
+        th2.innerHTML="目的地";
+        tr.append(th2);
+        var th3=document.createElement("th");
+        th3.innerHTML="时间";
+        tr.append(th3);
+
+        var th4=document.createElement("th");
+        tr.append(th4);
+
+        thead.append(tr);
+        table.append(thead);
+
+        for (var i = 0; i <record_list.length;i++){
+
+            var tr = document.createElement("tr");
+
+            tr.setAttribute("class","success");
+
+            var td1= document.createElement("td");
+
+            var add=record_list[i].dept_add;
+            var city=record_list[i].dept_city;
+            var dept_info=add+" ("+city+") ";
+            td1.innerHTML=dept_info;
+            tr.append(td1);
+
+            var td2= document.createElement("td");
+            var dest_add=record_list[i].dept_add;
+            var dest_city=record_list[i].dept_city;
+            var dest_info=dest_add+" ("+dest_city+") ";
+            td2.innerHTML=dest_info;
+            tr.append(td2);
+
+            var td3= document.createElement("td");
+            td3.innerHTML=record_list[i].datetime;
+            tr.append(td3);
+
+            var button = document.createElement("button");
+            button.setAttribute("type","button");
+            button.setAttribute("class","btn btn-primary btn-lg");
+            button.setAttribute("data-toggle","modal");
+            button.setAttribute("data-target","#"+record_list[i].id);
+            button.innerHTML="查看详情";
+
+            var fun_state = "createModal('"+record_list[i].id+"','"+record_list[i].datetime+"','"+record_list[i].phone+"','"+record_list[i].wechat+"','"+record_list[i].descpt+"','"+dept_info+"','"+dest_info+"')";
+            button.setAttribute("onclick",fun_state);
+
+            var td4= document.createElement("td");
+            td4.append(button);
+            tr.append(td4);
+            tbody.append(tr);
+
+        }
+
+        table.append(tbody);
+        var span = document.createElement("div");
+        var fluid_row = document.createElement("div");
+        var container = document.createElement("div");
+
+        span.setAttribute("class","span12");
+        fluid_row.setAttribute("class","row-fluid");
+        container.setAttribute("class","container-fluid");
+
+
+        span.append(table);
+        fluid_row.append(span);
+        container.append(fluid_row);
+        carpool_record.append(container);
+
+    }
+
+    function createModal(id,time,phone,wechat,descpt,dept,dest){
+
+        var mod = document.createElement("div");
+        mod.setAttribute("class","modal fade");
+        mod.setAttribute("id",id);
+        mod.setAttribute("tabindex","-1");
+        mod.setAttribute("role","dialog");
+        mod.setAttribute("aria-labelledby","myModalLabel");
+
+        var mod_dia = document.createElement("div");
+        mod_dia.setAttribute("class","modal-dialog");
+        mod_dia.setAttribute("role","document");
+
+        var mod_cont=document.createElement("div");
+        mod_cont.setAttribute("class","modal-content");
+
+        var mod_head=document.createElement("div");
+        mod_head.setAttribute("class","modal-header");
+        var btn = document.createElement("button");
+        btn.setAttribute("type","button");
+        btn.setAttribute("class","close");
+        btn.setAttribute("data-dismiss","modal");
+        btn.setAttribute("aria-label","Close");
+        var span = document.createElement("span");
+        span.setAttribute("aria-hidden","true");
+        span.innerHTML="&times;";
+        btn.append(span);
+
+        mod_head.append(btn);
+        var h4 = document.createElement("h4");
+        h4.innerHTML=time;
+        mod_head.append(h4);
+
+        var mod_bdy=document.createElement("div");
+        mod_bdy.setAttribute("class","modal-body");
+
+        var list_group = document.createElement("div");
+        list_group.setAttribute("class","list-group ");
+
+        var a1=document.createElement("a");
+        a1.setAttribute("href","#");
+        a1.setAttribute("class","list-group-item list-group-item-info");
+        a1.innerHTML="出发地："+dept;
+
+        var a2=document.createElement("a");
+        a2.setAttribute("href","#");
+        a2.setAttribute("class","list-group-item list-group-item-info");
+        a2.innerHTML="目的地："+dest;
+
+        var a3=document.createElement("a");
+        a3.setAttribute("href","#");
+        a3.setAttribute("class","list-group-item list-group-item-info");
+        a3.innerHTML="联系电话："+phone;
+
+        var a4=document.createElement("a");
+        a4.setAttribute("href","#");
+        a4.setAttribute("class","list-group-item list-group-item-info");
+        a4.innerHTML="微信："+wechat;
+
+        var a5=document.createElement("a");
+        a5.setAttribute("href","#");
+        a5.setAttribute("class","list-group-item list-group-item-info");
+        a5.innerHTML="描述："+descpt;
+
+        list_group.append(a1);
+        list_group.append(a2);
+        list_group.append(a3);
+        list_group.append(a4);
+        list_group.append(a5);
+        mod_bdy.append(list_group);
+        var mod_fot=document.createElement("div");
+        mod_fot.setAttribute("class","modal-footer");
+        mod_cont.append(mod_head);
+        mod_cont.append(mod_bdy);
+        mod_cont.append(mod_fot);
+
+        mod_dia.append(mod_cont);
+        mod.append(mod_dia);
+
+
+        var body = document.getElementById("body");
+        body.append(mod);
+
+    }
+
+
+</script>
+
+
+<a id="btn0_tableshow_records"></a>
+<input id="pageSize_tableshow_records" type="text" size="1" maxlength="2" value="getDefaultValue()"/><a> 条 </a> <a href="#"
+                                                                                                                   id="pageSizeSet">设置</a>
+<a id="sjzl_tableshow_records"></a>
+<a href="#" id="btn1_tableshow_records">首页</a>
+<a href="#" id="btn2_tableshow_records">上一页</a>
+<a href="#" id="btn3_tableshow_records">下一页</a>
+<a href="#" id="btn4_tableshow_records">尾页</a>
 <a>转到 </a>
-<input id="changePage_mytable" type="text" size="1" maxlength="4"/>
+<input id="changePage_tableshow_records" type="text" size="1" maxlength="4"/>
 <a>页 </a>
-<a href="#" id="btn5_mytable">跳转</a>
+<a href="#" id="btn5_tableshow_records">跳转</a>
 
-<table id="mytable" align="center" class="table">
 
-        <thead>
-        <tr>
-            <th>
-                编号
-            </th>
-            <th>
-                产品
-            </th>
-            <th>
-                交付时间
-            </th>
-            <th>
-                状态
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                1
-            </td>
-            <td>
-                TB - Monthly
-            </td>
-            <td>
-                01/04/2012
-            </td>
-            <td>
-                Default
-            </td>
-        </tr>
-        <tr class="success">
-            <td>
-                1
-            </td>
-            <td>
-                TB - Monthly
-            </td>
-            <td>
-                01/04/2012
-            </td>
-            <td>
-                Approved
-            </td>
-        </tr>
-        <tr class="error">
-            <td>
-                2
-            </td>
-            <td>
-                TB - Monthly
-            </td>
-            <td>
-                02/04/2012
-            </td>
-            <td>
-                Declined
-            </td>
-        </tr>
-        <tr class="warning">
-            <td>
-                3
-            </td>
-            <td>
-                TB - Monthly
-            </td>
-            <td>
-                03/04/2012
-            </td>
-            <td>
-                Pending
-            </td>
-        </tr>
-        <tr class="info">
-            <td>
-                4
-            </td>
-            <td>
-                TB - Monthly
-            </td>
-            <td>
-                04/04/2012
-            </td>
-            <td>
-                Call in to confirm
-            </td>
-        </tr>
-        </tbody>
 
-</table>
-</body>
-</html>
+
+<div id="show_records">
+
+
+
+
+</div>
+
+<!--<table id="mytable" align="center" class="table">-->
+
+<!--<thead>-->
+<!--<tr>-->
+<!--<th>-->
+<!--编号-->
+<!--</th>-->
+<!--<th>-->
+<!--产品-->
+<!--</th>-->
+<!--<th>-->
+<!--交付时间-->
+<!--</th>-->
+<!--<th>-->
+<!--状态-->
+<!--</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<tr>-->
+<!--<td>-->
+<!--1-->
+<!--</td>-->
+<!--<td>-->
+<!--TB - Monthly-->
+<!--</td>-->
+<!--<td>-->
+<!--01/04/2012-->
+<!--</td>-->
+<!--<td>-->
+<!--Default-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr class="success">-->
+<!--<td>-->
+<!--1-->
+<!--</td>-->
+<!--<td>-->
+<!--TB - Monthly-->
+<!--</td>-->
+<!--<td>-->
+<!--01/04/2012-->
+<!--</td>-->
+<!--<td>-->
+<!--Approved-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr class="error">-->
+<!--<td>-->
+<!--2-->
+<!--</td>-->
+<!--<td>-->
+<!--TB - Monthly-->
+<!--</td>-->
+<!--<td>-->
+<!--02/04/2012-->
+<!--</td>-->
+<!--<td>-->
+<!--Declined-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr class="warning">-->
+<!--<td>-->
+<!--3-->
+<!--</td>-->
+<!--<td>-->
+<!--TB - Monthly-->
+<!--</td>-->
+<!--<td>-->
+<!--03/04/2012-->
+<!--</td>-->
+<!--<td>-->
+<!--Pending-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr class="info">-->
+<!--<td>-->
+<!--4-->
+<!--</td>-->
+<!--<td>-->
+<!--TB - Monthly-->
+<!--</td>-->
+<!--<td>-->
+<!--04/04/2012-->
+<!--</td>-->
+<!--<td>-->
+<!--Call in to confirm-->
+<!--</td>-->
+<!--</tr>-->
+<!--</tbody>-->
+
+<!--</table>-->

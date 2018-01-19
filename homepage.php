@@ -536,7 +536,6 @@
             }
 
             table.append(tbody);
-
             var span = document.createElement("div");
             var fluid_row = document.createElement("div");
             var container = document.createElement("div");
